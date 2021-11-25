@@ -1,6 +1,28 @@
 # PKWW-zadanie4
+### This REST API convert format(CSV, JSON, XML,TXT) to selected format(CSV, JSON, XML,TXT)
 
+`POST /convertFile`
 
+    Put in body reqest two parameters
+    body{
+      "file": *Your file to format*,
+      "file_format": **your format src** , //available format CSV, JSON, XML,TXT
+      "out_format": **output format** ,  //available format CSV, JSON, XML,TXT
+      }
+      
+      example:
+       body{
+        "file": "upperCase=2 \n  stringToCheck='Where_is-1123!Banana' \n  lowerCase=11 \n  countNumber=4 \n  specialMarks=3 \n  hasCombination=true \n",
+        "file_format": "CSV",
+        "out_format": "JSON",
+      }
+      
+ **errors**
+ 
+    Response: null
+    
+    
+    
 # Poprawa Zadania 3 
 
 ### This REST API provides you informations about string you passed, in selected format(CSV, JSON, XML)
