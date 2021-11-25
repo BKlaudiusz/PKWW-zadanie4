@@ -43,7 +43,6 @@ public class ConvertFileServices {
 
        }else if(request.getParameter("file_format").equals("XML"))
        {
-           //<stringToCheck>'Where_is-1123!Banana'</stringToCheck>
            int start =request.getParameter("file").indexOf("<stringToCheck>") + "<stringToCheck>".length();
            int end = request.getParameter("file").indexOf("</stringToCheck>");
            String substring = request.getParameter("file").substring(start,end);
