@@ -48,6 +48,10 @@ public class ConvertFileServices {
 
        }else if(request.getParameter("file_format").equals("JSON"))
        {
+           int start =request.getParameter("file").indexOf(", stringToCheck='") +  "stringToCheck='".length();
+           int end = request.getParameter("file").indexOf("', lowerCase=");
+           String substring = request.getParameter("file").substring(start,end);
+           map.add("string", substring);
 
        }else if(request.getParameter("file_format").equals("CSV"))
        {
