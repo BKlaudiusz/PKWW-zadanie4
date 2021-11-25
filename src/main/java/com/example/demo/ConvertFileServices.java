@@ -51,6 +51,10 @@ public class ConvertFileServices {
 
        }else if(request.getParameter("file_format").equals("CSV"))
        {
+           int start =request.getParameter("file").indexOf("stringToCheck='") + "stringToCheck='".length();
+           int end = request.getParameter("file").indexOf("' \\n  lowerCase=");
+           String substring = request.getParameter("file").substring(start,end);
+           map.add("string", substring);
 
        }
         HttpEntity<MultiValueMap<String, String>> req = new HttpEntity<MultiValueMap<String, String>>(map, headers);
