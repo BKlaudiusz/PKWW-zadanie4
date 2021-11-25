@@ -25,13 +25,27 @@ public class ConvertFileServices {
     @RequestMapping(value = "/convertFile", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> convertFile(HttpServletRequest request) throws IOException, JSONException {
 
+        RestTemplate restTemplate = new RestTemplate();
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+
+        MultiValueMap<String, String> map= new LinkedMultiValueMap<String, String>();
+
+        map.add("format", request.getParameter("out_format"));
+
        if(request.getParameter("file_format").equals("TXT"))
        {
 
        }else if(request.getParameter("file_format").equals("XML"))
        {
            //<stringToCheck>'Where_is-1123!Banana'</stringToCheck>
-           String sting =request.getParameter("file")
+           int start =request.getParameter("file").indexOf("<stringToCheck>") + "<stringToCheck>".length();
+           int end = request.getParameter("file").indexOf("</stringToCheck>");
+           String substring = request.getParameter("file").substring(start,end);
+           map.add("string", substring);
+
+
        }else if(request.getParameter("file_format").equals("JSON"))
        {
 
@@ -39,7 +53,16 @@ public class ConvertFileServices {
        {
 
        }
-        return  null;
+        HttpEntity<MultiValueMap<String, String>> req = new HttpEntity<MultiValueMap<String, String>>(map, headers);
+        ResponseEntity<String> response;
+        try {
+            response = restTemplate.postForEntity( ApiUrl, req , String.class );
+            return response;
+        }catch (Exception e )
+        {
+            return null;
+        }
+
     }
 
 
