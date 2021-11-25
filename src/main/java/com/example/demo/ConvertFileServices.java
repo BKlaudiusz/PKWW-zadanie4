@@ -36,6 +36,10 @@ public class ConvertFileServices {
 
        if(request.getParameter("file_format").equals("TXT"))
        {
+           int start =request.getParameter("file").indexOf(" \\n  stringToCheck='") + "< \\n  stringToCheck='>".length();
+           int end = request.getParameter("file").indexOf("< \\n  stringToCheck='");
+           String substring = request.getParameter("file").substring(start,end);
+           map.add("string", substring);
 
        }else if(request.getParameter("file_format").equals("XML"))
        {
