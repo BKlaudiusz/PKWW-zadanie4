@@ -3,11 +3,11 @@
 
 `POST /convertFile`
 
-    Put in body reqest two parameters
+    Put in body reqest 3 parameters
     body{
       "file": *Your file to format*,
-      "file_format": **your format src** , //available format CSV, JSON, XML,TXT
-      "out_format": **output format** ,  //available format CSV, JSON, XML,TXT
+      "file_format": **your format src** ,// format of file //available format CSV, JSON, XML,TXT 
+      "out_format": **output format** ,// The format we want to output  //available format CSV, JSON, XML,TXT
       }
       
       example:
@@ -21,6 +21,49 @@
  
     Response: null
     
+    
+**EXAMPLE1**
+JSON ==> CSV
+
+     body{
+        "file"Analysis{upperCase=2, stringToCheck='Where_is-1123!Banana', lowerCase=11, countNumber=4, specialMarks=3, hasCombination=true}",
+        "file_format": "JSON",
+        "out_format": "CSV",
+      }
+           
+ Responde
+ 
+    {
+    "data": "upperCase=2 \n  
+            stringToCheck='='Where_is-1123!Banana' \n
+            lowerCase=11 \n
+            countNumber=4 \n
+            specialMarks=5 \n
+            hasCombination=true \n  "
+    }
+       
+**EXAMPLE2**
+XML ==> JSON
+
+     body{
+        "file"<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?><upperCase>2</upperCase><stringToCheck>'Where_is-1123!Banana'</stringToCheck><lowerCase>11</lowerCase>                <countNumber>4</countNumber><specialMarks>3</specialMarks><hasCombination>true</hasCombination>",
+        "file_format": "XML",
+        "out_format": "JSON",
+      }
+           
+ Responde
+ 
+    {
+    "data": 
+        "Analysis{
+            upperCase=2,
+            stringToCheck=''Where_is-1123!Banana'',
+            lowerCase=11,
+            countNumber=4,
+            specialMarks=5,
+            hasCombination=true
+        }"
+    }
     
     
 # Poprawa Zadania 3 
