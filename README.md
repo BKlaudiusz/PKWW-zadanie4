@@ -3,11 +3,11 @@
 
 `POST /convertFile`
 
-    Put in body reqest two parameters
+    Put in body reqest 3 parameters
     body{
       "file": *Your file to format*,
-      "file_format": **your format src** , //available format CSV, JSON, XML,TXT
-      "out_format": **output format** ,  //available format CSV, JSON, XML,TXT
+      "file_format": **your format src** ,// format of file //available format CSV, JSON, XML,TXT 
+      "out_format": **output format** ,// The format we want to output  //available format CSV, JSON, XML,TXT
       }
       
       example:
